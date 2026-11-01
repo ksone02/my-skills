@@ -153,3 +153,13 @@ def test_unslop_calls_humanize():
 
 def test_copy_table_header():
     assert "화면 | 위치(파일:줄) | 원문 | 제안 | 바뀐 점" in body("copy")
+
+
+def test_handoff_sections():
+    b = body("handoff")
+    for s in ("## 목적", "## 하던 일", "## 확인된 것", "## 현재 상태", "## 다음 할 일", "## 주요 파일", "## 정한 결정"):
+        assert s in b or s.replace("## ", "") in b
+
+
+def test_guard_state_path():
+    assert "my-skills-guard.on" in body("guard")
