@@ -23,7 +23,7 @@
 | 되물은 횟수 | 사용자에게 질문한 메시지 수 |
 | 남은 실수 | 끝난 뒤 완료 조건을 직접 확인해 실패한 개수 |
 
-세션 jsonl은 `~/.claude/projects/<프로젝트 경로>/<세션 id>.jsonl`에 있어요.
+세션 jsonl은 `~/.claude/projects/<프로젝트 경로>/<세션 id>.jsonl`에 있어요. 하위 에이전트 기록(`<세션 id>/subagents/*.jsonl`)은 스크립트가 자동으로 합쳐요.
 
 ## Superpowers를 끄는 조건
 my-skills가 두 과제 모두에서 토큰은 적고(캐시 포함 합계), 남은 실수는 같거나 적을 때.

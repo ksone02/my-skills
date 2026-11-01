@@ -36,15 +36,20 @@ def _reason(p: Path, root: Path) -> str:
         parts = p.resolve().relative_to(root.resolve()).parts
     except ValueError:
         parts = p.parts
-    if any(part in DATA_DIRS for part in parts[:-1]):
+    if any(part.lower() in DATA_DIRS for part in parts[:-1]):
         return "data-dir"
     if p.name == ".env" or p.name.startswith(".env."):
         return "env"
     if p.suffix.lower() in DATA_EXTS:
         return "data-ext"
+    if not p.is_file():
+        return "not-file"
     if p.stat().st_size > MAX_BYTES:
         return "too-large"
-    raw = p.read_bytes()
+    try:
+        raw = p.read_bytes()
+    except OSError:
+        return "unreadable"
     if b"\x00" in raw:
         return "binary"
     if any(pat.search(raw) for pat in SECRET_PATTERNS):

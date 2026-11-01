@@ -19,7 +19,7 @@ disable-model-invocation: true
 
 ## 실행 순서
 1. **역할을 골라요.** 이름을 받았으면 [roles/](references/roles/) 아래 그 파일. 없으면 대상을 보고 골라 보고 첫 줄에 적어요(사용자가 바로 바꿀 수 있게). 맞는 파일이 없으면 그 자리에서 역할 3개와 꼭 보는 항목을 만들어 쓰고, 끝에 저장할지 한 줄로 물어요.
-2. **역할마다 하위 에이전트를 한 라운드에 병렬로 띄워요.** 모델은 sonnet, 되돌리기 어려운 구조 결정이면 opus([models.md](../../rules/models.md)). 프롬프트는 [reviewer-prompt.md](references/reviewer-prompt.md)에 역할 절과 대상 경로를 넣어요. 필요하면 같은 프롬프트로 Codex 한 명을 더해요(`scripts/ext.py codex`).
+2. **역할마다 하위 에이전트를 한 라운드에 병렬로 띄워요.** 모델은 sonnet, 되돌리기 어려운 구조 결정이면 opus([models.md](../../rules/models.md)). 프롬프트는 [reviewer-prompt.md](references/reviewer-prompt.md)에 역할 절과 대상 경로를 넣어요. 필요하면 같은 프롬프트로 Codex 한 명을 더해요: `python3 <이 스킬 폴더>/../../scripts/ext.py codex --root <저장소> --timeout 540 --prompt-file <프롬프트> <대상 경로>`. Bash 도구는 `timeout: 600000`으로 부르고, 스크립트에는 `--timeout 540`을 넘겨요(스크립트가 먼저 끝나야 `STATUS:` 줄이 남아요). `STATUS: unavailable` 또는 `banned`이면 Codex 몫은 빼고, 보고에 `Codex 사용 불가, Claude로 검증 (<이유>)` 한 줄을 적어요(역할 검토자는 이미 Claude예요).
 3. **지적을 모아 걸러요.** 근거 없는 지적, 3층(취향) 지적은 버려요. 겹치는 지적은 합쳐요.
 4. **지적이 맞는지 확인해요.** 코드·자료·계산으로 확인하고, 틀린 지적은 근거와 함께 버려요.
 5. **3층으로 처리해요**([review-layers.md](../../rules/review-layers.md)). 1층은 대상 문서를 바로 고치고, 2층은 한 메시지로 묻고, 답이 없으면 고치지 않아요.

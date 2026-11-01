@@ -18,3 +18,10 @@ def test_by_model():
     by = session_tokens.totals(FIX)["by_model"]
     assert by["claude-opus-5-5"]["output_tokens"] == 7
     assert by["claude-sonnet-5-5"]["cache_creation_input_tokens"] == 50
+
+
+def test_subagent_files_included():
+    t = session_tokens.totals(FIX.parent / "session_with_sub.jsonl")
+    assert t["turns"] == 3
+    assert t["cache_creation_input_tokens"] == 100
+    assert t["by_model"]["claude-haiku-5-5"]["output_tokens"] == 4

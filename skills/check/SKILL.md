@@ -20,7 +20,7 @@ disable-model-invocation: true
 ## 실행 순서
 1. **직접 대조해요.** 완료 조건마다 확인 방법을 그대로 실행하고 결과를 적어요. 확인 불가는 통과가 아니에요.
 2. **화면이 있으면 재요.** `uv run --with playwright==1.49.1 python <이 스킬 폴더>/../../scripts/measure.py <url>` 결과의 `fail`과 스크린샷을 봐요. 1층 위반은 [ui.md](../../rules/ui.md) 기준.
-3. **독립 검사를 맡겨요.** 프롬프트는 [independent-checker.md](references/independent-checker.md). 바뀐 파일을 넘겨 `python3 <이 스킬 폴더>/../../scripts/ext.py codex --root <저장소> --prompt-file <프롬프트> <파일...>`를 돌려요. 보내는 파일은 스크립트가 [data-safety.md](../../rules/data-safety.md)대로 걸러요.
+3. **독립 검사를 맡겨요.** 프롬프트는 [independent-checker.md](references/independent-checker.md). 바뀐 파일을 넘겨 `python3 <이 스킬 폴더>/../../scripts/ext.py codex --root <저장소> --timeout 540 --prompt-file <프롬프트> <파일...>`를 돌려요. Bash 도구는 `timeout: 600000`으로 부르고, 스크립트에는 `--timeout 540`을 넘겨요(스크립트가 먼저 끝나야 `STATUS:` 줄이 남아요). 스크립트는 [data-safety.md](../../rules/data-safety.md)대로 걸러 낸 파일의 사본만 임시 폴더에 두고 Codex를 그 폴더에서 돌려요. 저장소의 나머지 파일은 Codex에게 보이지 않아요.
 4. **Codex가 안 되면 Claude로 해요.** 첫 줄이 `STATUS: unavailable` 또는 `STATUS: banned`이면 보고 첫 줄에 `Codex 사용 불가, Claude로 검증 (<이유>)`을 쓰고, 같은 프롬프트로 새 하위 에이전트를 띄워요. 모델은 만든 쪽과 다른 등급(만든 쪽이 sonnet이면 opus, 그 밖에는 sonnet)이고, 메인 대화와 만든 쪽의 생각 과정은 주지 않아요([models.md](../../rules/models.md)).
 5. **받은 지적은 맞는지 확인해요.** 지적마다 코드를 보거나 실행해서 맞으면 남기고, 틀리면 근거를 들어 버려요.
 6. **3층으로 처리해요.** 1층은 고치고 다시 1번부터, 2층은 한 번에 묻기([review-layers.md](../../rules/review-layers.md)).

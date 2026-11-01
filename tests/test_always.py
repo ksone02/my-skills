@@ -63,3 +63,16 @@ def test_remove_absent(tmp_path):
 def test_block_text_uses_repo_rules():
     b = always.block_text(Path(always.__file__).resolve().parents[1] / "rules/always.md")
     assert b.startswith(START) and b.endswith(END)
+
+
+def test_symlink_target_written_and_mode_kept(tmp_path):
+    real = tmp_path / "dotfiles" / "CLAUDE.md"
+    real.parent.mkdir()
+    real.write_text("# mine\n")
+    real.chmod(0o644)
+    link = tmp_path / "CLAUDE.md"
+    link.symlink_to(real)
+    always.install(link, rules(tmp_path))
+    assert link.is_symlink()
+    assert START in real.read_text()
+    assert (real.stat().st_mode & 0o777) == 0o644

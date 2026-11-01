@@ -23,9 +23,17 @@ def _messages(path: Path) -> dict[str, tuple[str, dict]]:
     return last
 
 
+def session_files(path: Path) -> list[Path]:
+    """본 기록과 하위 에이전트 기록(<세션id>/subagents/*.jsonl)."""
+    return [path, *sorted((path.parent / path.stem / "subagents").glob("*.jsonl"))]
+
+
 def totals(path: Path) -> dict:
     out: dict = {k: 0 for k in KEYS} | {"turns": 0, "by_model": {}}
-    for model, usage in _messages(path).values():
+    msgs: dict[str, tuple[str, dict]] = {}
+    for f in session_files(path):
+        msgs.update({f"{f.name}:{k}": v for k, v in _messages(f).items()})
+    for model, usage in msgs.values():
         m = out["by_model"].setdefault(model, {k: 0 for k in KEYS} | {"turns": 0})
         for k in KEYS:
             v = int(usage.get(k) or 0)

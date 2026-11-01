@@ -66,3 +66,8 @@ def test_external_banned(tmp_path):
 
 def test_external_banned_extra_texts(tmp_path):
     assert sf.external_banned(tmp_path, ["data must not be uploaded to generative AI services"])
+
+
+def test_directory_is_not_file(tmp_path):
+    (tmp_path / "src").mkdir()
+    assert reasons(tmp_path, "src") == {"src": "not-file"}

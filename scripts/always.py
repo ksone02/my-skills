@@ -22,10 +22,13 @@ def block_text(rules_path: Path) -> str:
 
 
 def _write(target: Path, text: str) -> None:
+    target = target.resolve()  # 심볼릭 링크면 원본 파일에 쓴다
     target.parent.mkdir(parents=True, exist_ok=True)
+    mode = target.stat().st_mode & 0o777 if target.exists() else 0o644
     fd, tmp = tempfile.mkstemp(dir=target.parent, prefix=".always-")
     with os.fdopen(fd, "w", encoding="utf-8") as f:
         f.write(text)
+    os.chmod(tmp, mode)
     os.replace(tmp, target)
 
 

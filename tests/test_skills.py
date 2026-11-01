@@ -163,3 +163,19 @@ def test_handoff_sections():
 
 def test_guard_state_path():
     assert "my-skills-guard.on" in body("guard")
+
+
+def test_ext_calls_have_bash_timeout():
+    for name in ("check", "research", "review"):
+        b = body(name)
+        assert "--timeout 540" in b and "600000" in b, name
+
+
+def test_review_uses_skill_relative_ext():
+    b = body("review")
+    assert "<이 스킬 폴더>/../../scripts/ext.py codex" in b and "Codex 사용 불가, Claude로 검증" in b
+
+
+def test_scratch_inside_git_dir():
+    for name in ("build", "finish"):
+        assert ".git/my-skills" in body(name) and ".my-skills/" not in body(name).replace(".git/my-skills/", ""), name
