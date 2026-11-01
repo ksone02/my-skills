@@ -9,7 +9,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_SECTIONS = ["목적", "입력", "산출물", "실행 순서", "하지 않는 것", "하지 말아야 할 것"]
 MAX_WORDS = 1500
-EXPECTED_SKILLS: list[str] = ["shape", "plan", "build", "check", "review", "finish", "research", "experiment", "handoff", "guard", "diagnose", "design", "copy", "unslop"]
+EXPECTED_SKILLS: list[str] = ["shape", "plan", "build", "check", "review", "finish", "research", "experiment", "handoff", "guard", "diagnose", "design", "copy", "unslop", "docs"]
 
 
 def skill_dirs() -> list[Path]:
@@ -153,6 +153,11 @@ def test_unslop_calls_humanize():
 
 def test_copy_table_header():
     assert "화면 | 위치(파일:줄) | 원문 | 제안 | 바뀐 점" in body("copy")
+
+
+def test_docs_modes_and_verification():
+    b = body("docs")
+    assert all(s in b for s in ("--audit", "참조", "방법", "설명", "튜토리얼", "실행 안 해 봄", "writing-ko.md"))
 
 
 def test_handoff_sections():

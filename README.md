@@ -43,6 +43,7 @@ python3 scripts/always.py remove    # 빼기 (블록 바깥은 그대로)
 | `diagnose` | 실패하는 확인 장치부터 만드는 버그 진단 |
 | `design` | 대시보드·도구 화면을 세 폭으로 재며 만들어요. 랜딩은 taste-skill에 맡겨요 |
 | `copy` | 화면 문구를 모아 점검하고 승인한 것만 고쳐요 |
+| `docs` | 코드를 읽고 문서를 쓰거나, 문서와 코드가 어긋난 곳을 고쳐요 |
 | `unslop` | 글의 AI 티를 지워요. 한국어 긴 글은 humanize-korean으로 마무리해요 |
 
 부를 때는 `/my-skills:<스킬> <인자>`예요. 예: `/my-skills:research 파이썬 백테스트 라이브러리 비교`.
