@@ -117,3 +117,22 @@ def test_build_retry_cap():
 
 def test_shape_done_format():
     assert re.search(r"D\d+\. .+ — ", body("shape"))
+
+
+def test_roles_format():
+    roles = sorted((ROOT / "skills/review/references/roles").glob("*.md"))
+    assert [r.stem for r in roles] == ["data-research", "quant", "web"]
+    for r in roles:
+        t = r.read_text(encoding="utf-8")
+        heads = len(re.findall(r"^## ", t, re.M))
+        assert heads >= 3 and t.count("꼭 보는 항목:") == heads, r.name
+
+
+def test_experiment_tsv_header():
+    header = "id\thypothesis\tchange\tbefore\tafter\tdelta\ttests\tverdict\tnote"
+    log = (ROOT / "skills/experiment/references/decision-log.md").read_text(encoding="utf-8")
+    assert header in body("experiment") or header in log
+
+
+def test_research_fallback_phrase():
+    assert "DeepSeek 사용 불가, Claude로 조사" in body("research")

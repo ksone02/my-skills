@@ -1,0 +1,40 @@
+---
+name: research
+description: 조사 계획을 먼저 확인받고, 넓게 훑은 뒤 고른 방향만 원문까지 깊게 파서 출처 붙은 파일 하나로 내요. "/my-skills:research <질문>"으로 불러요.
+disable-model-invocation: true
+---
+
+# research
+
+## 목적
+얕은 조사, 한 단어에 매몰된 조사, 토큰 낭비를 막아요. 조사는 결정을 내리기 위한 것이라 결정부터 적어요.
+
+## 입력
+- 조사 질문, 이 조사로 내릴 결정(모르면 물어요, 한 번만).
+
+## 산출물
+- `docs/research/<YYYY-MM-DD>-<주제>.md`
+  - `## 결정`: 이 조사로 내릴 결정
+  - `## 찾은 것`: 주장마다 출처 링크
+  - `## 확실한 것 / 추정`
+  - `## 함의`: 결정에 주는 영향
+- 채팅에는 요약 5줄 안팎만.
+
+## 실행 순서
+1. **조사 계획을 써서 확인받아요**([brief-template.md](references/brief-template.md)). 결정, 이미 아는 것, 결정을 바꿀 발견, 각도 4~6개(동의어, 옆 분야, 한국어·영어, 반대 입장, 원문 출처 종류). 1분 안에 읽을 분량이에요.
+2. **넓게 훑어요.** 각도마다 프롬프트 파일을 만들어 `python3 <이 스킬 폴더>/../../scripts/ext.py deepseek --root <저장소> --prompt-file <파일>`을 돌려요(서로 독립이라 함께 돌려도 돼요). 결과는 출처가 붙은 지도: 주요 갈래, 대표 출처, 빈 곳.
+3. **DeepSeek이 안 되면 Claude로 해요.** `STATUS: unavailable` 또는 `banned`이면 결과 첫 줄에 `DeepSeek 사용 불가, Claude로 조사 (<이유>)`를 쓰고 같은 각도를 haiku 하위 에이전트([searcher-prompt.md](references/searcher-prompt.md))에 맡겨요([models.md](../../rules/models.md)).
+4. **방향을 고르게 해요.** 지도를 보여 주고 사용자가 파고들 갈래를 골라요.
+5. **깊게 봐요.** 2차 요약글이 아니라 원문: 논문 본문과 인용 추적, 공식 문서, 소스 코드, 저장소. 깊게 보기는 sonnet 하위 에이전트나 메인이 해요. 새 출처를 봐도 새 내용이 안 나오면 멈춰요.
+6. **결과 파일을 써요.** 메인 대화에는 요약만.
+7. **처음 3회는 비교도 남겨요.** 같은 각도 하나를 DeepSeek과 Claude(haiku 하위 에이전트) 둘 다로 돌려, 출처 수·원문 비율·빠진 갈래를 `docs/research/model-compare.md`에 한 줄씩 적어요.
+
+## 하지 않는 것
+- 실험 돌리기, 코드 고치기(실험은 `experiment`).
+
+## 하지 말아야 할 것
+- 검색 질문에 데이터 값이나 개인 정보 넣기([data-safety.md](../../rules/data-safety.md)).
+- 읽지 않은 링크를 출처로 쓰기.
+- 조사 계획 확인 없이 바로 깊게 들어가기.
+
+출처: mattpocock/skills research, pstack swarm(각도 나누기).
