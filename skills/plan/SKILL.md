@@ -1,7 +1,6 @@
 ---
 name: plan
-description: 명세를 위험한 것부터 배치한 작업 단위로 나누고 스스로 점검한 계획을 써요. "/my-skills:plan <명세 경로>"로 불러요.
-disable-model-invocation: true
+description: 명세를 위험한 것부터 배치한 작업 단위로 나눠 계획을 써요. "구현 계획 세워 줘", "이 명세로 작업 나눠 줘"라고 할 때 써요. 파일 몇 개를 고치면 끝나는 작은 일에는 쓰지 않아요.
 ---
 
 # plan

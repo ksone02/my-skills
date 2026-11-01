@@ -1,7 +1,6 @@
 ---
 name: check
-description: 완료 조건을 하나씩 대조하고 실행으로 증명해요. 검사는 Codex가 하고, 안 되면 독립된 Claude가 해요. "/my-skills:check [명세 경로]"로 불러요.
-disable-model-invocation: true
+description: 완료 조건을 하나씩 대조하고 실행으로 증명해요. 검사는 Codex가 하고, 안 되면 독립된 Claude가 해요. "다 됐는지 검증해 줘", "명세대로 됐는지 확인해 줘"라고 할 때 써요. 시험 한 번 돌리기 같은 단순 확인에는 쓰지 않아요.
 ---
 
 # check

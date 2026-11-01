@@ -1,7 +1,6 @@
 ---
 name: experiment
-description: 지표 하나를 반복 실험으로 올려요. 측정 장치를 먼저 고정하고, 변경 하나마다 재고, 남기거나 되돌리고, 모두 기록해요. "/my-skills:experiment <목표>"로 불러요.
-disable-model-invocation: true
+description: 지표 하나를 반복 실험으로 올려요. 측정 장치를 먼저 고정하고, 변경마다 재고, 남기거나 되돌리고, 모두 기록해요. "이 지표 올려 줘", "실험 돌려 줘"라고 할 때 써요. 분석이나 백테스트를 한 번 돌리는 일에는 쓰지 않아요.
 ---
 
 # experiment

@@ -1,7 +1,6 @@
 ---
 name: finish
-description: 끝내기 전에 결과물을 실제로 다시 확인하고 임시 파일을 정리해요. 커밋·푸시·PR은 시킬 때만 해요. "/my-skills:finish"로 불러요.
-disable-model-invocation: true
+description: 끝내기 전에 결과물을 다시 확인하고 임시 파일을 정리한 뒤 마무리 보고를 해요. "마무리해 줘", "이 작업 닫아 줘"라고 할 때만 써요. Claude가 일이 끝났다고 스스로 판단했을 때는 쓰지 않아요.
 ---
 
 # finish

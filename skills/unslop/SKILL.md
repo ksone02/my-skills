@@ -1,7 +1,6 @@
 ---
 name: unslop
-description: 글의 AI 티를 지워요. 한국어는 우리 규칙으로 고친 뒤 긴 글은 humanize-korean으로 마무리하고, 영어는 영어 규칙으로 고쳐요. "/my-skills:unslop <파일 또는 글>"로 불러요.
-disable-model-invocation: true
+description: 글의 AI 티를 지워요. 한국어는 우리 규칙으로 고친 뒤 긴 글은 humanize-korean으로 마무리하고, 영어는 영어 규칙으로 고쳐요. "AI 티 빼 줘", "사람이 쓴 것처럼 고쳐 줘"라고 할 때 써요. 새 글을 처음부터 쓰거나 내용을 고치는 일에는 쓰지 않아요.
 ---
 
 # unslop

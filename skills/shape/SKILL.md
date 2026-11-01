@@ -1,7 +1,6 @@
 ---
 name: shape
-description: 흐릿한 아이디어를 질문으로 구체화해 완료 조건 목록이 있는 명세로 만들어요. "/my-skills:shape <아이디어>"로 불러요.
-disable-model-invocation: true
+description: 아직 흐릿한 아이디어를 질문으로 구체화해 완료 조건이 있는 명세로 만들어요. "이런 거 만들고 싶은데", "아이디어 구체화해 줘"처럼 뭘 만들지 아직 정해지지 않았을 때 써요. 할 일이 이미 분명한 수정에는 쓰지 않아요.
 ---
 
 # shape

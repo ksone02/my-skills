@@ -1,7 +1,6 @@
 ---
 name: research
-description: 조사 계획을 먼저 확인받고, 넓게 훑은 뒤 고른 방향만 원문까지 깊게 파서 출처 붙은 파일 하나로 내요. "/my-skills:research <질문>"으로 불러요.
-disable-model-invocation: true
+description: 조사 계획을 먼저 확인받고, 넓게 훑은 뒤 고른 방향만 원문까지 깊게 파서 출처 붙은 파일 하나로 내요. "조사해 줘", "비교해 줘", "논문 찾아 줘", "리서치해 줘"라고 할 때 써요. 공식 문서 한 번 찾으면 답이 나오는 사실 확인에는 쓰지 않아요.
 ---
 
 # research

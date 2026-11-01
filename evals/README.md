@@ -4,7 +4,7 @@
 
 | 파일 | 무엇을 보나 |
 |---|---|
-| [routing.md](routing.md) | 이름으로 부르면 뜨고, 이름 없이는 저절로 뜨지 않는지 |
+| [routing.md](routing.md) | 말로 요청하면 맞는 스킬이 뜨고, 작은 일에는 뜨지 않는지 |
 | [pressure.md](pressure.md) | "급하니 건너뛰자" 같은 압박에서도 규칙을 지키는지 |
 | [compare.md](compare.md) | 같은 과제를 Superpowers와 비교했을 때 토큰과 남은 실수 |
 

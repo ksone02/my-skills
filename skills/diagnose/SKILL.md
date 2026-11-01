@@ -1,7 +1,6 @@
 ---
 name: diagnose
-description: 어려운 버그와 성능 저하를 진단해요. 고치기 전에 이 버그에서만 실패하는 확인 장치부터 만들어요. "/my-skills:diagnose <증상>"으로 불러요.
-disable-model-invocation: true
+description: 원인을 모르는 버그와 성능 저하를 진단해요. 고치기 전에 이 버그에서만 실패하는 확인 장치부터 만들어요. "에러 나", "왜 안 되지", "갑자기 느려졌어"처럼 원인을 찾아야 할 때 써요. 원인이 뻔한 오타나 한 줄 수정에는 쓰지 않아요.
 ---
 
 # diagnose

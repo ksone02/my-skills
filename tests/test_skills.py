@@ -9,7 +9,6 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_SECTIONS = ["목적", "입력", "산출물", "실행 순서", "하지 않는 것", "하지 말아야 할 것"]
 MAX_WORDS = 1500
-AUTO_SKILLS = {"docs"}  # 이름 없이 말해도 뜨는 스킬
 EXPECTED_SKILLS: list[str] = ["shape", "plan", "build", "check", "review", "finish", "research", "experiment", "handoff", "guard", "diagnose", "design", "copy", "unslop", "docs"]
 
 
@@ -54,10 +53,7 @@ def test_frontmatter(d):
     meta, _ = read(d)
     assert meta.get("name") == d.name
     assert meta.get("description")
-    if d.name in AUTO_SKILLS:
-        assert "disable-model-invocation" not in meta
-    else:
-        assert meta.get("disable-model-invocation") == "true"
+    assert "disable-model-invocation" not in meta
 
 
 @pytest.mark.parametrize("d", SKILLS, ids=ids)
@@ -90,6 +86,17 @@ def test_subagent_model_named(d):
     for para in re.split(r"\n\s*\n", text):
         if "하위 에이전트" in para:
             assert re.search(r"haiku|sonnet|opus|rules/models\.md", para), para[:80]
+
+
+@pytest.mark.parametrize("d", SKILLS, ids=ids)
+def test_description_says_when_not_to_trigger(d):
+    assert "쓰지 않아요" in read(d)[0]["description"]
+
+
+@pytest.mark.parametrize("name", ["build", "review"])
+def test_costly_skills_confirm_first(name):
+    head = body(name).split("## 실행 순서")[1].split("1. ")[0]
+    assert "확인" in head
 
 
 def test_expected_skills_present():

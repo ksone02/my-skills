@@ -1,7 +1,6 @@
 ---
 name: guard
-description: 위험한 명령(운영 브랜치 푸시, rm -rf, 비밀키 읽기 등) 앞에서 확인을 요청하는 훅을 켜고 꺼요. "/my-skills:guard on|off|status"로 불러요.
-disable-model-invocation: true
+description: 위험한 명령(운영 브랜치 푸시, rm -rf, 비밀키 읽기 등) 앞에서 확인을 요청하는 훅을 켜고 꺼요. "위험한 명령 막아 줘", "guard 꺼 줘", "guard 상태 알려 줘"라고 할 때만 써요. 그 밖의 권한이나 설정 이야기에는 쓰지 않아요.
 ---
 
 # guard

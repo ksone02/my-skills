@@ -1,7 +1,6 @@
 ---
 name: build
-description: 계획을 하위 에이전트에 맡겨 구현하고, 작업마다 명세 준수와 품질을 검토해요. "/my-skills:build <계획 경로>"로 불러요.
-disable-model-invocation: true
+description: 계획 문서를 하위 에이전트에 맡겨 구현하고 작업마다 검토해요. "이 계획대로 구현해 줘"처럼 계획 문서를 구현하라고 할 때만 써요. 계획 문서 없는 수정이나 기능 추가에는 쓰지 않아요.
 ---
 
 # build
@@ -18,6 +17,8 @@ disable-model-invocation: true
 - 진행 기록 `docs/progress/<YYYY-MM-DD>-<주제>.md`. 형식은 [progress-log.md](references/progress-log.md).
 
 ## 실행 순서
+사용자가 슬래시로 부르지 않았으면 먼저 "작업 N개를 에이전트로 구현해요"라고 한 줄로 알리고 확인받아요.
+
 1. **진행 기록을 먼저 열어요.** 이미 있으면 `T<n>: complete` 줄이 있는 작업은 다시 하지 않아요. 요약(컴팩트) 뒤에는 기억보다 이 파일과 `git log`를 믿어요.
 2. **작업을 묶어요.** 같은 모양의 작은 수정(같은 변경을 여러 파일에)은 한 번에 보내요. 판단·시험·검토가 따로 필요한 작업은 따로 보내요.
 3. **구현자 하위 에이전트를 띄워요.** 모델은 [models.md](../../rules/models.md) 등급표대로 Agent 도구의 `model`에 꼭 적어요(계획에 코드가 다 있으면 haiku, 설명만 있으면 sonnet). 작업 설명서는 [implementer-brief.md](references/implementer-brief.md) 형식의 파일(`.git/my-skills/brief-T<n>.md`)로 줘요. 임시 파일을 `.git/` 안에 두는 건 실수로 커밋되지 않게 하려는 거예요.

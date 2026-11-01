@@ -1,7 +1,6 @@
 ---
 name: design
-description: 대시보드·도구 화면을 만들고 고쳐요. 실제 브라우저 세 폭으로 재고 스크린샷으로 비평해요. 랜딩 페이지는 --landing으로 taste-skill에 맡겨요. "/my-skills:design [--landing] <요청>"으로 불러요.
-disable-model-invocation: true
+description: 대시보드·도구·랜딩 화면을 새로 만들거나 크게 고쳐요. 실제 브라우저 세 폭으로 재고 스크린샷으로 비평해요. "화면 만들어 줘", "대시보드 디자인 다시 해 줘"라고 할 때 써요. 색 하나, 간격 하나 바꾸는 작은 수정에는 쓰지 않아요.
 ---
 
 # design

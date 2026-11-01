@@ -1,7 +1,6 @@
 ---
 name: handoff
-description: 일을 안전하게 멈추고(pause), 다음 세션에서 이어 가고(resume), 사용자가 정한 결정을 기록해요(decide). "/my-skills:handoff pause|resume|decide"로 불러요.
-disable-model-invocation: true
+description: 일을 안전하게 멈추고(pause), 다음 세션에서 이어 가고(resume), 사용자가 정한 결정을 기록해요(decide). "여기까지 정리해 줘", "이어서 하자", "이 결정 기록해 줘"라고 할 때 써요. 세션 중간의 일반 진행 보고에는 쓰지 않아요.
 ---
 
 # handoff
