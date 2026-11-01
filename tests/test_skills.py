@@ -9,6 +9,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_SECTIONS = ["목적", "입력", "산출물", "실행 순서", "하지 않는 것", "하지 말아야 할 것"]
 MAX_WORDS = 1500
+AUTO_SKILLS = {"docs"}  # 이름 없이 말해도 뜨는 스킬
 EXPECTED_SKILLS: list[str] = ["shape", "plan", "build", "check", "review", "finish", "research", "experiment", "handoff", "guard", "diagnose", "design", "copy", "unslop", "docs"]
 
 
@@ -53,7 +54,10 @@ def test_frontmatter(d):
     meta, _ = read(d)
     assert meta.get("name") == d.name
     assert meta.get("description")
-    assert meta.get("disable-model-invocation") == "true"
+    if d.name in AUTO_SKILLS:
+        assert "disable-model-invocation" not in meta
+    else:
+        assert meta.get("disable-model-invocation") == "true"
 
 
 @pytest.mark.parametrize("d", SKILLS, ids=ids)

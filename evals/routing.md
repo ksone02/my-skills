@@ -19,5 +19,4 @@
 | diagnose | `/my-skills:diagnose 저장하면 500 에러` | 저장하면 500 에러 나 |
 | design | `/my-skills:design 설정 화면` | 설정 화면 예쁘게 해 줘 |
 | copy | `/my-skills:copy src/pages` | 문구 다듬어 줘 |
-| docs | `/my-skills:docs --audit main` | 문서화해 줘 |
 | unslop | `/my-skills:unslop README.md` | README AI 티 좀 빼 줘 |
