@@ -136,3 +136,20 @@ def test_experiment_tsv_header():
 
 def test_research_fallback_phrase():
     assert "DeepSeek 사용 불가, Claude로 조사" in body("research")
+
+
+def test_design_viewports():
+    b = body("design")
+    assert all(s in b for s in ("1440x900", "1366x768", "390x844", "최대 3회"))
+
+
+def test_design_landing_delegates():
+    assert "design-taste-frontend" in body("design")
+
+
+def test_unslop_calls_humanize():
+    assert "humanize-korean:humanize-korean" in body("unslop")
+
+
+def test_copy_table_header():
+    assert "화면 | 위치(파일:줄) | 원문 | 제안 | 바뀐 점" in body("copy")
