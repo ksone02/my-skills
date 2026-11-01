@@ -19,7 +19,7 @@ GitHub에 올린 뒤에는 `/plugin install my-skills --marketplace ksone02/my-s
 
 ### 상시 원칙 (선택, 권장)
 
-스킬을 부르지 않아도 지킬 원칙 6줄을 `~/.claude/CLAUDE.md`에 넣어요. 넣기 전에 [rules/always.md](rules/always.md)를 읽어 보세요.
+스킬을 부르지 않아도 지킬 원칙 7줄을 `~/.claude/CLAUDE.md`에 넣어요. 넣기 전에 [rules/always.md](rules/always.md)를 읽어 보세요.
 
 ```sh
 python3 scripts/always.py install   # 넣기 (두 번 해도 하나만 남아요)
