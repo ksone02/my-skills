@@ -97,3 +97,23 @@ def test_plugin_manifest():
     market = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
     assert plugin["name"] == "my-skills"
     assert market["plugins"][0]["source"] == "./"
+
+
+# --- 스킬별 내용 검사 (Task 9~12) ---
+
+
+def test_check_fallback_phrase():
+    assert "Codex 사용 불가, Claude로 검증" in body("check")
+
+
+def test_build_statuses():
+    b = body("build")
+    assert all(s in b for s in ("완료", "걱정 있음", "막힘", "맥락 필요"))
+
+
+def test_build_retry_cap():
+    assert "3회" in body("build")
+
+
+def test_shape_done_format():
+    assert re.search(r"D\d+\. .+ — ", body("shape"))
