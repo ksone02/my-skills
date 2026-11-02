@@ -19,7 +19,7 @@ def test_always_block_markers():
     assert t.count("<!-- my-skills:always:start -->") == 1
     assert t.count("<!-- my-skills:always:end -->") == 1
     inner = t.split("<!-- my-skills:always:start -->")[1].split("<!-- my-skills:always:end -->")[0]
-    assert len([line for line in inner.splitlines() if line.strip()]) == 7
+    assert len([line for line in inner.splitlines() if line.strip()]) == 8
 
 
 def test_review_layers_sections():

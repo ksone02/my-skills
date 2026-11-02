@@ -2,7 +2,7 @@
 
 개발과 연구를 같이 하는 사람을 위한 Claude Code 스킬 묶음이에요. Superpowers를 대신하려고 만들었어요.
 
-- 슬래시 없이 말로 해도 스킬이 떠요. 작은 수정에는 뜨지 않게 설명에 조건을 적었고, 비싼 `build`와 `review`는 시작 전에 확인받아요.
+- 슬래시 없이 말로 해도 스킬이 뜨고, 구현 흐름의 스킬은 말하지 않아도 작업 시작 전에 떠요. 작은 수정에는 뜨지 않게 설명에 조건을 적었고, 비싼 `build`와 `review`는 시작 전에 확인받아요.
 - 피드백은 두 종류예요. 싼 대조 검사는 자주, 비싼 전문가 검토는 기획 직후와 설계 직후에만 해요.
 - 검색은 DeepSeek, 검증은 Codex에 맡기고, 안 되면 Claude로 넘어가요.
 
@@ -19,7 +19,7 @@ GitHub에 올린 뒤에는 `/plugin install my-skills --marketplace ksone02/my-s
 
 ### 상시 원칙 (선택, 권장)
 
-스킬을 부르지 않아도 지킬 원칙 7줄을 `~/.claude/CLAUDE.md`에 넣어요. 넣기 전에 [rules/always.md](rules/always.md)를 읽어 보세요.
+스킬을 부르지 않아도 지킬 원칙 8줄을 `~/.claude/CLAUDE.md`에 넣어요. 넣기 전에 [rules/always.md](rules/always.md)를 읽어 보세요.
 
 ```sh
 python3 scripts/always.py install   # 넣기 (두 번 해도 하나만 남아요)

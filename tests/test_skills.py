@@ -99,6 +99,11 @@ def test_costly_skills_confirm_first(name):
     assert "확인" in head
 
 
+@pytest.mark.parametrize("name", ["plan", "build", "design", "check", "research"])
+def test_flow_skills_trigger_on_the_work_not_the_words(name):
+    assert "사용자가 말하지 않아도" in read(ROOT / "skills" / name)[0]["description"]
+
+
 def test_expected_skills_present():
     assert set(EXPECTED_SKILLS) <= {d.name for d in SKILLS}
 
